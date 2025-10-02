@@ -1,0 +1,148 @@
+# Duke3D Upscale Pipeline Configuration
+# Configuration for the AI-powered upscaling pipeline for Duke Nukem 3D assets
+
+# Pipeline version
+version: "2.0"
+
+# Game configuration
+game:
+  # Duke Nukem 3D specific settings
+  name: "Duke Nukem 3D"
+  # Supported input file types
+  supported_formats:
+    - "GRP"
+    - "exe"
+    - "data"
+  # Default palette for art files (DOS palette)
+  default_palette: "standard"
+
+# Upscaling configuration
+upscale:
+  # AI model to use for upscaling
+  model: "realesrgan-x4plus"  # Options: realesrgan-x4plus, realesrgan-x4plus-anime
+
+  # Upscaling scale factor
+  scale: 4
+
+  # Tile size for processing (larger = faster but uses more VRAM)
+  tile_size: 512
+
+  # Processing device (auto-detects GPU, falls back to CPU)
+  device: "auto"
+
+  # Model download settings
+  model_cache_dir: "files/models"
+
+  # Alpha channel handling strategy
+  alpha_handling: "separate_upscale"  # Options: separate_upscale, premultiplied
+
+# Audio processing configuration
+audio:
+  # Audio conversion settings
+  sample_rate: 44100
+  bit_depth: 16
+
+  # SoundFont settings for MIDI conversion
+  soundfont: "files/soundfonts/Trevor0402_SC-55.sf2"
+  soundfont_url: "https://github.com/FluidSynth/fluidsynth/raw/master/data/soundfont/GeneralUser_GS_1.471.sf2"
+
+  # Audio format preferences
+  preferred_format: "WAV"
+
+# Image processing configuration
+image:
+  # Default output format for images
+  format: "PNG"
+
+  # Alpha premultiplication settings (prevents pink halos)
+  premultiply_alpha: true
+
+  # Alpha extraction settings
+  extract_alpha: true
+
+  # Alpha upscaling method
+  alpha_upscale_method: "lanczos"  # Options: lanczos, bicubic, nearest
+
+  # Quality settings for image processing
+  compression_level: 6
+
+# Verification and quality control
+verification:
+  # Pink artifact detection settings
+  pink_threshold: 0.95
+  magentat_tolerance: 5
+
+  # Image quality checks
+  min_resolution: 1024
+  max_file_size: 10485760  # 10MB
+
+  # Alpha channel verification
+  require_alpha: false
+  alpha_tolerance: 0.1
+
+# Scrubbing configuration (post-processing)
+scrub:
+  # Magenta pixel removal settings
+  remove_magenta: true
+  magenta_threshold: 240
+  magenta_fuzz: 10
+
+  # Color correction
+  auto_contrast: true
+  gamma_correction: 1.0
+
+# Output and mod generation configuration
+output:
+  # Mod output directory
+  mod_dir: "files/output/duke3d"
+
+  # Hightile structure
+  hightile_structure: true
+
+  # File organization
+  organize_by_type: true
+
+  # Metadata inclusion
+  include_metadata: true
+
+# Performance and resource settings
+performance:
+  # Parallel processing settings
+  max_workers: 4
+
+  # Memory management
+  max_memory_mb: 8192
+
+  # GPU memory usage
+  gpu_memory_fraction: 0.8
+
+  # Cache settings
+  enable_cache: true
+  cache_dir: "files/temp/cache"
+
+# Logging configuration
+logging:
+  # Log level
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+
+  # Log file settings
+  log_to_file: true
+  log_file: "logs/pipeline.log"
+
+  # Console output
+  console_output: true
+  verbose: false
+
+# Development and testing settings
+development:
+  # Debug mode
+  debug: false
+
+  # Dry run (simulates operations without writing files)
+  dry_run: false
+
+  # Test mode (uses smaller subset of files)
+  test_mode: false
+
+  # Force reprocessing (ignores cache)
+  force: false
