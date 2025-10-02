@@ -4,5 +4,3 @@
 [submodule "vendor/eduke32"]
 	path = vendor/eduke32
 	url = https://voidpoint.io/terminx/eduke32.git
-[submodule "vendor/art2image"]
-	path = vendor/art2img

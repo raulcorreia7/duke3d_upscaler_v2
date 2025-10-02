@@ -1,6 +1,6 @@
 [project]
 name = "duke3d-upscale"
-version = "0.1.0"
+version = "0.2.0"
 description = "Duke3D Upscale Pipeline - AI-powered upscaling for Duke Nukem 3D assets"
 readme = "README.md"
 requires-python = ">=3.8"

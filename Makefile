@@ -67,9 +67,10 @@ setup:
 	git submodule update --init --recursive
 	@echo "Building kextract and art2img tools..."
 	$(MAKE) -C vendor/eduke32 tools-only
-	$(MAKE) -C tools/build/art2img
+	cd vendor/art2img && mkdir -p build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . --parallel $(shell nproc)
 	@echo "Copying built tools..."
 	@cp vendor/eduke32/kextract tools/build/eduke32/ 2>/dev/null || true
+	@cp vendor/art2img/build/bin/art2img tools/build/art2img/ 2>/dev/null || true
 	@echo "Downloading models and soundfonts..."
 	@python -m src.pipeline.main setup
 	@echo "Setting up complete. You can now run: make all"
