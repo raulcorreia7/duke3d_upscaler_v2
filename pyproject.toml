@@ -1,0 +1,28 @@
+[project]
+name = "duke3d-upscale"
+version = "0.1.0"
+description = "Duke3D Upscale Pipeline - AI-powered upscaling for Duke Nukem 3D assets"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "realesrgan",
+    "torch",
+    "numpy",
+    "Pillow",
+    "opencv-python-headless",
+    "gdown",
+    "pyyaml",
+    "tqdm"
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["src.pipeline", "src.pipeline.phases", "src.pipeline.utils"]
+
+[tool.setuptools.package-dir]
+"src.pipeline" = "src/pipeline"
+"src.pipeline.phases" = "src/pipeline/phases"
+"src.pipeline.utils" = "src/pipeline/utils"
