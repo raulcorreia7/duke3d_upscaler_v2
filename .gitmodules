@@ -1,6 +1,8 @@
 [submodule "vendor/art2img"]
 	path = vendor/art2img
-	url = https://github.com/raulcorreia7/art2image.git
+	url = https://github.com/raulcorreia7/art2img.git
 [submodule "vendor/eduke32"]
 	path = vendor/eduke32
 	url = https://voidpoint.io/terminx/eduke32.git
+[submodule "vendor/art2image"]
+	path = vendor/art2img
